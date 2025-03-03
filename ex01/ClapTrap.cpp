@@ -7,6 +7,26 @@ ClapTrap::ClapTrap(std::string name): _name(name) {
 	std::cout << _name + " ClapTrap has been created" << std::endl;
 }
 
+ClapTrap::ClapTrap() : _name("Default"), _hit_points(10), _energy_points(10), _attack_damage(0) {
+	std::cout << "ClapTrap " << _name << " has been created (default)!" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& other) {
+	*this = other;
+	std::cout << "ClapTrap " << _name << " has been copied!" << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+	if (this != &other) {
+		this->_name = other._name;
+		this->_hit_points = other._hit_points;
+		this->_energy_points = other._energy_points;
+		this->_attack_damage = other._attack_damage;
+	}
+	std::cout << "ClapTrap " << _name << " has been assigned!" << std::endl;
+	return *this;
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << _name + " ClapTrap has been destroyed" << std::endl;
